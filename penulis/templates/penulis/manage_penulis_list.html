@@ -1,0 +1,14 @@
+
+{% for data in penulis %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.nama}}</td>
+        <td>{{data.phone}}</td>
+        <td>{{data.email}}</td>
+        <td>
+            <button type="button" class="btn btn-danger js-penulis-delete" data-url="#">
+                <span class="fa fa-trash-o"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% endfor %}

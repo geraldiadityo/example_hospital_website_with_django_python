@@ -1,0 +1,42 @@
+{% extends 'basepenulis.html' %}
+{% load static %}
+
+{% block title_app %}
+    {{page_title}}
+{% endblock title_app %}
+
+{% block content %}
+    <div class="box-header">
+        <h4 class="box-title">{{page_title}}</h4>
+    </div>
+    <div class="box-body table-responsive">
+        <table class="table table-bordered table-striped" id="table-unpublish">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tanggal</th>
+                    <th>Nama Penulis</th>
+                    <th>Kategori Artikel</th>
+                    <th>Review Isi</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include 'penulis/unpublish_manage_list.html' %}
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="modal-unpublish">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script src="{% static 'js/penulis/unpublish_my.js' %}"></script>
+{% endblock javascripts %}
+    

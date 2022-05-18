@@ -1,0 +1,16 @@
+
+{% for data in departement %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.nama_departement}}</td>
+        <td>{{data.tentang}}</td>
+        <td>
+            <button type="button" class="btn btn-sm btn-success js-departement-edit" data-url="{% url 'penulis:edit-departement' data.id %}">
+                <span class="fa fa-pencil"></span> Edit
+            </button>
+            <button type="button" class="btn btn-sm btn-danger js-departement-delete" data-url="{% url 'penulis:delete-departement' data.id %}">
+                <span class="fa fa-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% endfor %}

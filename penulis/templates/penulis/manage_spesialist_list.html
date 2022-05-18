@@ -1,0 +1,18 @@
+
+{% for data in spesialist %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.nama_spesialist}}</td>
+        <td>{{data.spesialist}}</td>
+        <td>{{data.tentang}}</td>
+        <td>
+            <button type="button" class="btn btn-sm btn-success js-spesialist-edit" data-url="{% url 'penulis:edit-spesialist' data.id %}">
+                <span class="fa fa-pencil"></span> Edit
+            </button>
+            <button type="button" class="btn btn-sm btn-danger js-spesialist-delete" data-url="{% url 'penulis:delete-spesialist' data.id %}">
+                <span class="fa fa-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% endfor %}
+    

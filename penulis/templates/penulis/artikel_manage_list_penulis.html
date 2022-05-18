@@ -1,0 +1,20 @@
+
+{% for data in artikel %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.judul}}</td>
+        <td>{{data.isi|truncatewords:5}}</td>
+        <td>{{data.kategori}}</td>
+        <td>{{data.published|date:'Y-m-d'}}</td>
+        <td>{{data.status}}</td>
+        <td>
+            <button type="button" class="btn btn-success js-artikel-edit" data-url="{% url 'penulis:artikel-update' data.id %}">
+                <span class="fa fa-pencil-square-o"></span> Edit
+            </button>
+            <button type="button" class="btn btn-danger js-artikel-delete" data-url="{% url 'penulis:artikel-delete' data.id %}">
+                <span class="fa fa-trash-o"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% endfor %}
+    

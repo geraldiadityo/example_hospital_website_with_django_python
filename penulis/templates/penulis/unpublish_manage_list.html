@@ -1,0 +1,20 @@
+
+{% for data in artikel_unpub %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.published|date:'Y-m-d'}}</td>
+        <td>{{data.penulis}}</td>
+        <td>{{data.kategori}}</td>
+        <td>{{data.isi | truncatewords:'5'}}</td>
+        <td>{{data.status}}</td>
+        <td>
+            <button type="button" class="btn btn-success js-published-artikel" data-url="{% url 'penulis:published_artikel' data.id %}">
+                <span class="fa fa-plane"></span> Published
+            </button>
+        </td>
+    </tr>
+    {% empty %}
+        <tr>
+            <td colspan="7" class="bg-success text-center">All Published</td>
+        </tr>
+{% endfor %}

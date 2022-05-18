@@ -1,0 +1,16 @@
+<form action="{% url 'penulis:published_artikel' artikel.id %}" method="POST" class="js-published-artikel-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Published Artikel</h4>
+    </div>
+    <div class="modal-body">
+        <p class="lead">Publish Artikel Berjudul <b>{{artikel.judul}}</b>, Penulis : <b>{{artikel.penulis}}</b> ? </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success"><span class="fa fa-plane"></span> Published</button>
+    </div>
+</form>

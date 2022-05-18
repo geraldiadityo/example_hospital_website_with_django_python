@@ -1,0 +1,16 @@
+<form action="{% url 'penulis:artikel-create' %}" method="POST" class="js-artikel-create-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Create Artikel</h4>
+    </div>
+    <div class="modal-body">
+        {% include 'penulis/artikel_form.html' %}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Post</button>
+    </div>
+</form>
