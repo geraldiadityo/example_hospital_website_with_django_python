@@ -21,6 +21,7 @@ $(function(){
             type:form.attr("method"),
             data:form.serialize(),
             dataType:"JSON",
+            cache:false,
             success:function(data){
                 if (data.form_is_valid){
                     alert("data success sender!");

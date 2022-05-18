@@ -104,23 +104,38 @@ def artikel_save_form(request,form,template_name):
 @allowed_user(allowed_roles=['admin','penulis'])
 def createArtikel(request):
     penulis = request.user.penulis
+    form = ArtikelForm(initial={'penulis':penulis})
     if request.method == 'POST':
         form = ArtikelForm(request.POST,request.FILES)
-    else:
-        form = ArtikelForm(initial={'penulis':penulis})
+        if form.is_valid():
+            form.save()
+            return HttpResponse(
+                '<script>alert("data success sender!");window.location="'+str(reverse_lazy('penulis:home-penulis'))+'";</script>'
+            )
+    context = {
+        'form':form,
+        'page_title':'Create Artikel',
+    }
     
-    return artikel_save_form(request, form, 'penulis/partartikelcreate.html')
+    return render(request, 'penulis/partartikelcreate.html',context)
 
 @login_required(login_url='penulis:login')
 @allowed_user(allowed_roles=['admin','penulis'])
 def updateArtikel(request,pk):
     artikel = request.user.penulis.artikel_set.get(id=pk)
+    form = ArtikelForm(instance=artikel)
     if request.method == 'POST':
-        form = ArtikelForm(request.POST,request.FILES, instance=artikel)
-    else:
-        form = ArtikelForm(instance=artikel)
-    
-    return artikel_save_form(request, form, 'penulis/partartikelupdate.html')
+        form = ArtikelForm(request.POST,request.FILES,instance=artikel)
+        if form.is_valid():
+            form.save()
+            return HttpResponse(
+                '<script>alert("data succes sender!");window.location="'+str(reverse_lazy('penulis:home-penulis'))+'";</script>'
+            )
+    context = {
+        'page_title':'Edit Artikel',
+        'form':form,
+    }
+    return render(request, 'penulis/partartikelupdate.html',context)
 
 @login_required(login_url='penulis:login')
 @allowed_user(allowed_roles=['admin','penulis'])

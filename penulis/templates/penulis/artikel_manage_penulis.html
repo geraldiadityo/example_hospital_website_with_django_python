@@ -9,9 +9,7 @@
     <div class="box-header">
         <h3 class="box-title">Artikel Penulis Manage</h3>
         <div class="pull-right">
-            <button type="button" class="btn btn-primary js-create-artikel" data-url="{% url 'penulis:artikel-create' %}">
-                <span class="fa fa-plus-circle"></span> Tambah
-            </button>
+            <a class="btn btn-primary" href="{% url 'penulis:artikel-create' %}"><i class="fa fa-plus"></i> Tambah</a>
         </div>
     </div>
     <div class="box-body table-responsive">

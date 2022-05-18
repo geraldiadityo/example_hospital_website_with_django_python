@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import Select, Textarea, TextInput, HiddenInput
+from django.forms import Select, Textarea, TextInput, HiddenInput,FileInput
 
 from .models import Artikel
 
@@ -35,4 +35,5 @@ class ArtikelForm(forms.ModelForm):
                     'rows':'4',
                 }
             ),
+            'foto':FileInput(),
         }
