@@ -33,3 +33,14 @@ class Departement(models.Model):
     def __str__(self):
         return "{}".format(self.nama_departement)
 
+class JadwalDokter(models.Model):
+    dokter = models.ForeignKey(Spesialist, on_delete=models.SET_NULL,null=True)
+    senin = models.TextField()
+    selasa = models.TextField()
+    rabu = models.TextField()
+    kamis = models.TextField()
+    jumat = models.TextField()
+    sabtu = models.TextField()
+    
+    def __str__(self):
+        return "{}".format(self.dokter)
