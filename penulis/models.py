@@ -13,18 +13,6 @@ class Penulis(models.Model):
     def __str__(self):
         return "{}".format(self.nama)
 
-class Spesialist(models.Model):
-    nama_spesialist = models.CharField(max_length=100, blank=True,null=True)
-    spesialist = models.CharField(max_length=50,blank=True,null=True)
-    tentang = models.TextField()
-    jadwal = models.DateField(null=True)
-    profile_pic = models.ImageField(default='profile1.png', null=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return "{}".format(self.nama_spesialist)
-
-
 class Departement(models.Model):
     nama_departement = models.CharField(max_length=20, null=True,blank=True)
     keterangan = models.TextField()
@@ -33,6 +21,16 @@ class Departement(models.Model):
     def __str__(self):
         return "{}".format(self.nama_departement)
 
+class Spesialist(models.Model):
+    nama_spesialist = models.CharField(max_length=100, blank=True,null=True)
+    spesialist = models.ForeignKey(Departement, on_delete=models.SET_NULL,null=True)
+    tentang = models.TextField()
+    jadwal = models.DateField(null=True)
+    profile_pic = models.ImageField(default='profile1.png', null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{}".format(self.nama_spesialist)
 class JadwalDokter(models.Model):
     dokter = models.ForeignKey(Spesialist, on_delete=models.SET_NULL,null=True)
     senin = models.TextField()

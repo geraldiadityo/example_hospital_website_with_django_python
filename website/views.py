@@ -6,5 +6,7 @@ def home(request):
     context = {
         'dokter':dokter,
         'departement':departement,
+        'doktercount':dokter.count(),
+        'departementcount':departement.count(),
     }
     return render(request, 'dashboard.html',context)

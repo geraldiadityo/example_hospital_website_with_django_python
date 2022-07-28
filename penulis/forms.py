@@ -45,7 +45,7 @@ class SpesialistForm(forms.ModelForm):
         
         widgets = {
             'nama_spesialist':TextInput(),
-            'spesialist':TextInput(),
+            'spesialist':Select(),
             'tentang':Textarea(
                 attrs={
                     'cols':'30',

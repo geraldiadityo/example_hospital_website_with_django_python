@@ -213,7 +213,7 @@ def saveSpesialist(request,form,template_name):
         if form.is_valid():
             data['form_is_valid'] = True
             form.save()
-            listspesialist = Spesialist.objects.all().order_by('-date-created')
+            listspesialist = Spesialist.objects.all().order_by('-date_created')
             data['html_spesialist_list'] = render_to_string('penulis/manage_spesialist_list.html',{'spesialist':listspesialist})
         else:
             data['form_is_valid'] = False
