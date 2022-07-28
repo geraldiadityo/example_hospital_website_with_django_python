@@ -1,0 +1,50 @@
+{% extends 'basepenulis.html' %}
+{% load static %}
+
+{% block title_app %}
+    {{page_title}}
+{% endblock title_app %}
+
+{% block content %}
+    <div class="box-header">
+        <h3 class="box-title">{{page_title}}</h3>
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary js-jadwal-add" data-url="{% url 'penulis:jadwaldokter-add' %}">
+                <span class="fa fa-plus"></span> Add
+            </button>
+        </div>
+    </div>
+    <div class="box-body table-responsive">
+        <table class="table table-bordered table-striped" id="table-jadwaldokter">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nama Dokter</th>
+                    <th>Spesialis</th>
+                    <th>Senin</th>
+                    <th>Selasa</th>
+                    <th>Rabu</th>
+                    <th>Kamis</th>
+                    <th>Jum'at</th>
+                    <th>Sabtu</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include 'penulis/jadwaldokter_manage_list.html' %}
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="modal-jadwaldokter">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script src="{% static 'js/penulis/jadwaldokter-my.js' %}"></script>
+{% endblock javascripts %}
+    

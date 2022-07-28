@@ -1,0 +1,22 @@
+
+{% for data in jadwaldokter %}
+    <tr>
+        <td>{{data.dokter.nama_dokter}}</td>
+        <td>{{data.dokter.spesialis}}</td>
+        <td>{{data.senin}}</td>
+        <td>{{data.selasa}}</td>
+        <td>{{data.rabu}}</td>
+        <td>{{data.kamis}}</td>
+        <td>{{data.jumat}}</td>
+        <td>{{data.sabtu}}</td>
+        <td>
+            <button type="button" class="btn btn-sm btn-success js-jadwal-edit" data-url="{% url 'penulis:jadwaldokter-edit' data.id %}">
+                <span class="fa fa-pencil"></span> Edit
+            </button>
+            <button type="button" class="btn btn-sm btn-danger js-jadwal-delete" data-url="{% url 'penulis:jadwaldokter-delete' data.id %}">
+                <span class="fa fa-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% endfor %}
+    

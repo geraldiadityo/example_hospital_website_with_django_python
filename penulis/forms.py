@@ -1,9 +1,9 @@
 from django import forms
-from django.forms import TextInput,PasswordInput,Textarea,DateInput
+from django.forms import TextInput,PasswordInput,Textarea,DateInput,Select
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Penulis,Spesialist,Departement
+from .models import Penulis,Spesialist,Departement,JadwalDokter
 
 class CreateUserForm(UserCreationForm):
     class Meta:
@@ -80,4 +80,37 @@ class DepartementForm(forms.ModelForm):
                     'rows':'4',
                 }
             ),
+        }
+
+class JadwalDokterForm(forms.ModelForm):
+    class Meta:
+        model = JadwalDokter
+        fields = [
+            'dokter',
+            'senin',
+            'selasa',
+            'rabu',
+            'kamis',
+            'jumat',
+            'sabtu',
+        ]
+        
+        labels = {
+            'dokter':'Nama Dokter',
+            'senin':'Jadwal Senen',
+            'selasa':'Jadwal Selasa',
+            'rabu':'Jadwal Rabu',
+            'kamis':'Jadwal Kamis',
+            'jumat':'Jadwal Jumat',
+            'sabtu':'Jadwal Sabtu',
+        }
+
+        widgets = {
+            'dokter':Select,
+            'senin':TextInput,
+            'selasa':TextInput,
+            'rabu':TextInput,
+            'kamis':TextInput,
+            'jumat':TextInput,
+            'sabtu':TextInput,
         }

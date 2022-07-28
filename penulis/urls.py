@@ -19,10 +19,18 @@ from .views import (
     createDepartement,
     editDepartement,
     deleteDepartment,
+    createJadwal,
+    editJadwal,
+    deleteJadwal,
+    jadwalManage,
 )
 
 app_name='penulis'
 urlpatterns = [
+    re_path(r'delete-jadwal/(?P<pk>\d+)/$',deleteJadwal,name='jadwaldokter-delete'),
+    re_path(r'^edit-jadwal/(?P<pk>\d+)/$',editJadwal,name='jadwaldokter-edit'),
+    path('create-jadwal/',createJadwal,name='jadwaldokter-add'),
+    path('manage-jadwal/',jadwalManage,name='jadwaldokter-manage'),
     re_path(r'^delete-departement/(?P<pk>\d+)/$',deleteDepartment,name='delete-departement'),
     re_path(r'^edit-departement/(?P<pk>\d+)/$',editDepartement,name='edit-departement'),
     path('create-departement/',createDepartement,name='departement-add'),

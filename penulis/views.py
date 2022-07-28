@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 
-from .models import Penulis,Spesialist,Departement
+from .models import Penulis,Spesialist,Departement,JadwalDokter
 from artikel.models import Artikel
 
 from .decorators import (
@@ -20,6 +20,7 @@ from .forms import (
     CreateUserForm,
     SpesialistForm,
     DepartementForm,
+    JadwalDokterForm,
 )
 
 from artikel.forms import ArtikelForm
@@ -320,3 +321,66 @@ def deleteDepartment(request,pk):
         data['html_form'] = render_to_string('penulis/partdepartementdelete.html',context,request=request)
     
     return JsonResponse(data)
+
+def save_jadwal_dokter(request,form,template_name):
+    data = dict()
+    if request.method == 'POST':
+        if form.is_valid():
+            data['form_is_valid'] = True
+            form.save()
+            jadwal_dokter = JadwalDokter.objects.all()
+            data['html_jadwal_list'] = render_to_string('penulis/jadwaldokter_manage_list.html',{'jadwaldokter':jadwal_dokter})
+        else:
+            data['form_is_valid'] = False
+    
+    context = {
+        'form':form,
+    }
+    data['html_form'] = render_to_string(template_name,context,request=request)
+    return JsonResponse(data)
+
+@login_required(login_url='penulis:login')
+def createJadwal(request):
+    if request.method == 'POST':
+        form = JadwalDokterForm(request.POST)
+    else:
+        form = JadwalDokterForm()
+    
+    return save_jadwal_dokter(request, form, 'penulis/partjadwaladd.html')
+
+@login_required(login_url='penulis:login')
+def editJadwal(request,pk):
+    jadwal = JadwalDokter.objects.get(id=pk)
+    if request.method == 'POST':
+        form = JadwalDokterForm(request.POST,instance=jadwal)
+    else:
+        form = JadwalDokterForm(instance=jadwal)
+    
+    return save_jadwal_dokter(request, form, 'penulis/partjadwaledit.html')
+
+@login_required(login_url='penulis:login')
+def deleteJadwal(request,pk):
+    data = dict()
+    jadwal = JadwalDokter.objects.get(id=pk)
+    if request.method == 'POST':
+        data['form_is_valid'] = True
+        jadwal.delete()
+        jadwal_list = JadwalDokter.objects.all()
+        data['html_jadwal_list'] = render_to_string('penulis/jadwaldokter_manage_list.html',{'jadwaldokter':jadwal_list},request=request)
+    else:
+        context = {
+            'jadwal':jadwal,
+        }
+        data['html_form'] = render_to_string('penulis/partjadwaldelete.html',context,request=request)
+    
+    return JsonResponse(data)
+
+@login_required(login_url='penulis:login')
+def jadwalManage(request):
+    datajadwal = JadwalDokter.objects.all()
+    context = {
+        'page_title':'Manage Jadwal Dokter',
+        'jadwaldokter':datajadwal,
+    }
+    
+    return render(request, 'penulis/jadwaldokter_manage.html',context)
