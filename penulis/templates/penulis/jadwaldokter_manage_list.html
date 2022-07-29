@@ -1,8 +1,9 @@
 
 {% for data in jadwaldokter %}
     <tr>
-        <td>{{data.dokter.nama_dokter}}</td>
-        <td>{{data.dokter.spesialis}}</td>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.dokter.nama_spesialist}}</td>
+        <td>{{data.dokter.spesialist}}</td>
         <td>{{data.senin}}</td>
         <td>{{data.selasa}}</td>
         <td>{{data.rabu}}</td>
