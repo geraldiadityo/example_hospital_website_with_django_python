@@ -32,13 +32,26 @@ class Spesialist(models.Model):
     def __str__(self):
         return "{}".format(self.nama_spesialist)
 class JadwalDokter(models.Model):
+    JADWAL_NORMAL = (
+        ('08:30 - 14:15','08:30 - 14:15'),
+        ('Kosong','Kosong'),
+        ('Cuti','Cuti'),
+
+    )
+
+    JADWAL_JUMAT = (
+        ('08:00 - 11:45','08:00 - 11:45'),
+        ('Kosong','Kosong'),
+        ('Cuti','Cuti'),
+    )
+
     dokter = models.ForeignKey(Spesialist, on_delete=models.SET_NULL,null=True)
-    senin = models.TextField()
-    selasa = models.TextField()
-    rabu = models.TextField()
-    kamis = models.TextField()
-    jumat = models.TextField()
-    sabtu = models.TextField()
+    senin = models.TextField(choices=JADWAL_NORMAL)
+    selasa = models.TextField(choices=JADWAL_NORMAL)
+    rabu = models.TextField(choices=JADWAL_NORMAL)
+    kamis = models.TextField(choices=JADWAL_NORMAL)
+    jumat = models.TextField(choices=JADWAL_JUMAT)
+    sabtu = models.TextField(choices=JADWAL_NORMAL)
     
     def __str__(self):
         return "{}".format(self.dokter)

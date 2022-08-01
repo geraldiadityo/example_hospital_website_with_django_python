@@ -107,10 +107,10 @@ class JadwalDokterForm(forms.ModelForm):
 
         widgets = {
             'dokter':Select,
-            'senin':TextInput,
-            'selasa':TextInput,
-            'rabu':TextInput,
-            'kamis':TextInput,
-            'jumat':TextInput,
-            'sabtu':TextInput,
+            'senin':Select,
+            'selasa':Select,
+            'rabu':Select,
+            'kamis':Select,
+            'jumat':Select,
+            'sabtu':Select,
         }
