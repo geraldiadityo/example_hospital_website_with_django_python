@@ -60,9 +60,9 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">RSU Mayjen H.A.Thalib</a></h1>
+      <a href="#" class="logo me-auto"><img src="{% static 'Medilab/assets/img/logorsu.png' %}" alt="" class="img-fluid"></a>
+      <h1 class="logo me-auto"><a href="index.html">RSUD Mayjen H.A.Thalib</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -71,14 +71,14 @@
           <li><a class="nav-link scrollto" href="#services">Pelayanan</a></li>
           <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
           <li><a class="nav-link scrollto" href="#dokter">Dokter</a></li>
+          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
           <li><a class="nav-link scrollto" href="#jadwaldokter">Jadwal Dokter</a></li>
-          <li><a class="nav-link" href="{% url 'artikel:list' 1 %}">Berita RSU</a></li>
           <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+      <a href="{% url 'artikel:list' 1 %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Berita</span> RSU</a>
 
     </div>
   </header><!-- End Header -->
@@ -389,40 +389,40 @@
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+              <a href="{% static 'Medilab/assets/img/gallery/img1.jpeg' %}" class="galelry-lightbox">
+                <img src="{% static 'Medilab/assets/img/gallery/img1.jpeg' %}" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+              <a href="{% static 'Medilab/assets/img/gallery/gallery-2.jpg' %}" class="galelry-lightbox">
+                <img src="{% static 'Medilab/assets/img/gallery/gallery-2.jpg' %}" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+              <a href="{% static 'Medilab/assets/img/gallery/gallery-3.jpg' %}" class="galelry-lightbox">
+                <img src="{% static 'Medilab/assets/img/gallery/gallery-3.jpg' %}" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+              <a href="{% static 'Medilab/assets/img/gallery/gallery-4.jpg' %}" class="galelry-lightbox">
+                <img src="{% static 'Medilab/assets/img/gallery/gallery-4.jpg' %}" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+              <a href="{% static 'Medilab/assets/img/gallery/gallery-5.jpg' %}" class="galelry-lightbox">
+                <img src="{% static 'Medilab/assets/img/gallery/gallery-5.jpg' %}" alt="" class="img-fluid">
               </a>
             </div>
           </div>
@@ -590,33 +590,21 @@
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Join Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
           </div>
 
         </div>
