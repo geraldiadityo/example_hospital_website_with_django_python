@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput,PasswordInput,Textarea,DateInput,Select
+from django.forms import TextInput,PasswordInput,Textarea,DateInput,Select,FileInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -57,6 +57,7 @@ class SpesialistForm(forms.ModelForm):
                     'type':'date',
                 }
             ),
+            'profile_pic':FileInput(),
         }
 
 class DepartementForm(forms.ModelForm):

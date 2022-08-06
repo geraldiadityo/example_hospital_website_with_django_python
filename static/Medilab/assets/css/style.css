@@ -405,7 +405,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 90vh;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/about.JPG") top center;
   background-size: cover;
   margin-bottom: -200px;
 }
@@ -685,7 +685,7 @@ section {
   font-size: 14px;
 }
 .about .video-box {
-  background: url("../img/about.JPG") center center no-repeat;
+  background: url("../img/bannerbawah.jpeg") center center no-repeat;
   background-size: cover;
   min-height: 500px;
 }
