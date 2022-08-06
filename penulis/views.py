@@ -206,42 +206,38 @@ def spesialistView(request):
     return render(request, 'penulis/manage_spesialist.html',context)
 
 
-
-def saveSpesialist(request,form,template_name):
-    data = dict()
-    if request.method == 'POST':
-        if form.is_valid():
-            data['form_is_valid'] = True
-            form.save()
-            listspesialist = Spesialist.objects.all().order_by('-date_created')
-            data['html_spesialist_list'] = render_to_string('penulis/manage_spesialist_list.html',{'spesialist':listspesialist})
-        else:
-            data['form_is_valid'] = False
-    
-    context = {
-        'form':form,
-    }
-    data['html_form'] = render_to_string(template_name,context,request=request)
-    return JsonResponse(data)
-
 @login_required(login_url='penulis:login')
 def createSpesialist(request):
+    form = SpesialistForm()
     if request.method == 'POST':
-        form = SpesialistForm(request.POST,request.FILES)
-    else:
-        form = SpesialistForm()
-    
-    return saveSpesialist(request, form, 'penulis/partspesialistadd.html')
+        form = SpesialistForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            HttpResponse(
+                "<script>alert('data success sender!');window.location='"+str(reverse_lazy('penulis:manage-spesialist'))+"';</script>"
+            )
+    context = {
+        'page_title':'Add Spesialist',
+        'form':form,
+    }
+    return render(request, 'penulis/partspesialistadd.html',context)
 
 @login_required(login_url='penulis:login')
 def editSpesialist(request,pk):
     spesialist = Spesialist.objects.get(id=pk)
+    form = SpesialistForm(instance=spesialist)
     if request.method == 'POST':
-        form = SpesialistForm(request.POST,request.FILES, instance=spesialist)
-    else:
-        form = SpesialistForm(instance=spesialist)
-    
-    return saveSpesialist(request, form, 'penulis/partspesialistedit.html')
+        form = SpesialistForm(request.POST, request.FILES,instance=spesialist)
+        if form.is_valid():
+            form.save()
+            HttpResponse(
+                "<script>alert('data success sender!');window.location='"+str(reverse_lazy('penulis:manage-spesialist'))+"';</script>"
+            )
+    context = {
+        'page_title':'Edit Spesialist',
+        'form':form,
+    }
+    return render(request, 'penulis/partspesialistedit.html',context)
 
 @login_required(login_url='penulis:login')
 def deleteSpesialist(request,pk):

@@ -6,9 +6,9 @@
         <td>{{data.spesialist}}</td>
         <td>{{data.tentang}}</td>
         <td>
-            <button type="button" class="btn btn-sm btn-success js-spesialist-edit" data-url="{% url 'penulis:edit-spesialist' data.id %}">
+            <a class="btn btn-sm btn-primary" href="{% url 'penulis:edit-spesialist' data.id %}">
                 <span class="fa fa-pencil"></span> Edit
-            </button>
+            </a>
             <button type="button" class="btn btn-sm btn-danger js-spesialist-delete" data-url="{% url 'penulis:delete-spesialist' data.id %}">
                 <span class="fa fa-trash"></span> Delete
             </button>

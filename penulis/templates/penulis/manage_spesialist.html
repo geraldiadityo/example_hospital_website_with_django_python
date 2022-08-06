@@ -9,9 +9,9 @@
     <div class="box-header">
         <h3 class="box-title">{{page_title}}</h3>
         <div class="pull-right">
-            <button type="button" class="btn btn-primary js-spesialist-add" data-url="{% url 'penulis:add-spesialist' %}">
-                <span class="fa fa-plus"></span> Tambah
-            </button>
+            <a class="btn btn-primary" href="{% url 'penulis:add-spesialist' %}">
+                <span class="fa fa-plus-circle"></span> Add
+            </a>
         </div>
     </div>
     <div class="box-body table-responsive">

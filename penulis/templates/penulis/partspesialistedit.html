@@ -1,16 +1,27 @@
-<form action="{% url 'penulis:edit-spesialist' form.instance.pk %}" method="POST" class="js-spesialist-edit-form" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Edit Spesialist</h4>
+{% extends 'basepenulis.html' %}
+{% load static %}
+
+{% block title_app %}
+    {{page_title}}
+{% endblock title_app %}
+
+{% block content %}
+    <div class="box-header">
+        <h3 class="box-title">{{page_title}}</h3>
+        <div class="pull-right">
+            <a href="{% url 'penulis:manage-spesialist' %}" class="btn btn-warning">
+                <span class="fa fa-refresh"></span> Back
+            </a>
+        </div>
     </div>
-    <div class="modal-body">
-        {% include 'penulis/spesialist_form.html' %}
+    <div class="box-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'penulis/spesialist_form.html' %}
+            <div class="pull-right">
+                <button type="reset" class="btn btn-default">Reset</button>
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </form>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-success">Update</button>
-    </div>
-</form>
+{% endblock content %}

@@ -35,10 +35,6 @@ $(function(){
         return false;
     };
 
-    $(".js-spesialist-add").click(loadForm);
-    $("#modal-spesialist").on("submit",".js-spesialist-add-form",saveForm);
-    $("#table-spesialist tbody").on("click",".js-spesialist-edit",loadForm);
-    $("#modal-spesialist").on("submit",".js-spesialist-edit-form",saveForm);
     $("#table-spesialist tbody").on("click",".js-spesialist-delete",loadForm);
     $("#modal-spesialist").on("submit",".js-spesialist-delete-form",saveForm);
 
