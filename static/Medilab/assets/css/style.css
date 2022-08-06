@@ -685,7 +685,7 @@ section {
   font-size: 14px;
 }
 .about .video-box {
-  background: url("../img/bannerbawah.jpeg") center center no-repeat;
+  background: url("../img/bannerbawah.jpeg" ) center center no-repeat;
   background-size: cover;
   min-height: 500px;
 }
