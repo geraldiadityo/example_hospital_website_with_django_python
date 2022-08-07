@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 
-from .models import Penulis,Spesialist,Departement,JadwalDokter
+from .models import Penulis,Spesialist,Departement,JadwalDokter,ContactPengaduan
 from artikel.models import Artikel
 
 from .decorators import (
@@ -380,3 +380,40 @@ def jadwalManage(request):
     }
     
     return render(request, 'penulis/jadwaldokter_manage.html',context)
+
+@login_required(login_url='penulis:login')
+def contactManage(request):
+    datapengaduan = ContactPengaduan.objects.all().order_by('-date_created')
+    context = {
+        'page_title':'Contact Pengaduan',
+        'datapengaduan':datapengaduan,
+    }
+    return render(request, 'penulis/manage_pengaduan.html',context)
+
+@login_required(login_url='penulis:login')
+def lihatPengaduan(request,pk):
+    data = dict()
+    pengaduan = ContactPengaduan.objects.get(id=pk)
+    context = {
+        'pengaduan':pengaduan,
+    }
+    data['html_form'] = render_to_string('penulis/partpengaduanview.html',context,request=request)
+    return JsonResponse(data)
+
+@login_required(login_url='penulis:login')
+def deletePengaduan(request,pk):
+    data = dict()
+    pengaduan = ContactPengaduan.objects.get(id=pk)
+    if request.method == 'POST':
+        pengaduan.delete()
+        data['form_is_valid'] = True
+        datapengaduan = ContactPengaduan.objects.all().order_by('-date_created')
+        data['html_pengaduan_list'] = render_to_string('penulis/manage_pengaduan_list.html',{'datapengaduan':datapengaduan},request=request)
+    else:
+        context = {
+            'pengaduan':pengaduan,
+        }
+        data['html_form'] = render_to_string('penulis/partpengaduandelete.html',context,request=request)
+    
+    return JsonResponse(data)
+

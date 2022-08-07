@@ -55,3 +55,13 @@ class JadwalDokter(models.Model):
     
     def __str__(self):
         return "{}".format(self.dokter)
+
+class ContactPengaduan(models.Model):
+    nama = models.CharField(null=True,max_length=200)
+    email = models.EmailField(null=True)
+    subject = models.TextField()
+    message = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.nama,self.subject)
