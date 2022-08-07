@@ -23,10 +23,16 @@ from .views import (
     editJadwal,
     deleteJadwal,
     jadwalManage,
+    contactManage,
+    lihatPengaduan,
+    deletePengaduan,
 )
 
 app_name='penulis'
 urlpatterns = [
+    re_path(r'^delete-pengaduan/(?P<pk>\d+)/$',deletePengaduan,name='delete-pengaduan'),
+    re_path(r'^detail-pengaduan/(?P<pk>\d+)/$',lihatPengaduan,name='pengaduan-view'),
+    path('manage-pengaduan/',contactManage,name='manage-pengaduan'),
     re_path(r'delete-jadwal/(?P<pk>\d+)/$',deleteJadwal,name='jadwaldokter-delete'),
     re_path(r'^edit-jadwal/(?P<pk>\d+)/$',editJadwal,name='jadwaldokter-edit'),
     path('create-jadwal/',createJadwal,name='jadwaldokter-add'),

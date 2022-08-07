@@ -6,10 +6,10 @@
         <td>{{data.subject}}</td>
         <td>{{data.date_created|date:'Y-m-d'}}</td>
         <td>
-            <button type="button" class="btn btn-sm btn-primary js-pengaduan-view" data-url="#">
+            <button type="button" class="btn btn-sm btn-primary js-pengaduan-view" data-url="{% url 'penulis:pengaduan-view' data.id %}">
                 <span class="fa fa-eye"></span> Lihat
             </button>
-            <button type="button" class="btn btn-sm btn-danger js-pengaduan-delete" data-url="#">
+            <button type="button" class="btn btn-sm btn-danger js-pengaduan-delete" data-url="{% url 'penulis:delete-pengaduan' data.id %}">
                 <span class="fa fa-trash"></span> Hapus
             </button>
         </td>
