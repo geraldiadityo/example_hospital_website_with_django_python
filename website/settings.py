@@ -79,10 +79,13 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'websitersu',
+        'NAME': 'rsut2899_websitersu',
+        #'NAME':'websitersu',
         'HOST':'/var/run/mysqld/mysqld.sock',
-        'USER':'admin',
-        'PASSWORD':'Ge@140019',
+        #'USER':'admin',
+        #'PASSWORD':'Ge@140019',
+        'USER':'rsut2899',
+        'PASSWORD':'m28abbiUFxz243',
         'PORT':'3306',
     }
 }
